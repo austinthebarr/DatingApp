@@ -19,6 +19,9 @@ namespace DatingWebsite.API
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                //.UseUrls("http://*:4000")
                 .UseStartup<Startup>();
     }
 }
