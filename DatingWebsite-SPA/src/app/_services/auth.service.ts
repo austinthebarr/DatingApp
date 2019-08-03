@@ -21,6 +21,10 @@ constructor(private http: HttpClient) { }
               localStorage.setItem('Token', user);
             }
           })
-      )
+      );
+  }
+
+  register(model: any) {
+    return this.http.post(this.baseUrl + 'register', model);
   }
 }
