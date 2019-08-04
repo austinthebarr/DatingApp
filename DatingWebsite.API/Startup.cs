@@ -54,19 +54,19 @@ namespace DatingWebsite.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
+            // if (env.IsDevelopment())
+            // {
+            //     app.UseDeveloperExceptionPage();
+            // }
+            // else
+            // {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseExceptionHandler(builder => {
                     builder.Run(async context => {
                         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
+                    
                         var error = context.Features.Get<IExceptionHandlerFeature>();
-
+                        
                         if (error != null)
                         {
                             context.Response.AddApplicationError(error.Error.Message);
@@ -75,7 +75,7 @@ namespace DatingWebsite.API
                     });
                 });
                 app.UseHsts();
-            }
+            // }
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             //app.UseHttpsRedirection();
             app.UseAuthentication();
