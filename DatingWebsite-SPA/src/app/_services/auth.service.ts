@@ -16,7 +16,6 @@ constructor(private http: HttpClient) { }
       .pipe(
         map(
           (response: any) => {
-            
             const user = response.token;
             if (user) {
               localStorage.setItem('Token', user);
